@@ -1,4 +1,4 @@
-apt install meson -y
+apt install meson pkg-config -y
 git clone https://chromium.googlesource.com/chromium/tools/depot_tools -b main
 export PATH=$PATH:$(pwd)/depot_tools
 fetch v8
