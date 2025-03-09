@@ -9,7 +9,7 @@ gn gen x64.debug
 cd x64.debug
 echo "is_component_build = false
 is_debug = false
-target_cpu = "x64"
+target_cpu = \"x64\"
 v8_enable_sandbox = true
 
 v8_enable_backtrace = true
