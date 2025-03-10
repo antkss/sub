@@ -1,4 +1,10 @@
 apt install meson pkg-config -y
+wget "https://github.com/antkss/sub/raw/refs/heads/master/iculib.tar.xz"
+tar -xf iculib.tar.xz
+cp -r iculib/usr /
+wget "https://github.com/antkss/sub/raw/refs/heads/master/libxml.tar.xz"
+tar -xf libxml.tar.xz
+cp -r libxml/usr /
 git clone https://chromium.googlesource.com/chromium/tools/depot_tools -b main
 export PATH=$PATH:$(pwd)/depot_tools
 fetch v8
