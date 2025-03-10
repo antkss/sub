@@ -1,4 +1,9 @@
-apt install meson pkg-config -y
+echo "deb http://ftp.de.debian.org/debian bullseye main " >> /etc/apt/sources.list
+echo " deb http://security.debian.org/debian-security bullseye-security main " >> /etc/apt/sources.list
+apt update 
+apt install meson pkg-config python3.9 -y
+ln -s /usr/bin/python3.9 /usr/bin/python3 -f 
+ln -s /usr/bin/python3.9 /usr/bin/python -f
 wget "https://github.com/antkss/sub/raw/refs/heads/master/iculib.tar.xz"
 tar -xf iculib.tar.xz
 cp -r iculib/usr /
