@@ -34,3 +34,4 @@ v8_enable_memory_corruption_api = true
 ninja
 cd ..
 tar -cJf v8build.tar.xz x64.debug
+mv v8build.tar.xz /
