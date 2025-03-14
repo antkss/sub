@@ -1,7 +1,7 @@
 echo "deb http://ftp.de.debian.org/debian bullseye main " >> /etc/apt/sources.list
 echo " deb http://security.debian.org/debian-security bullseye-security main " >> /etc/apt/sources.list
 apt update 
-apt install meson pkg-config python3.9 -y
+apt install meson pkg-config python3.9 bear -y
 ln -s /usr/bin/python3.9 /usr/bin/python3 -f 
 ln -s /usr/bin/python3.9 /usr/bin/python -f
 wget "https://github.com/antkss/sub/raw/refs/heads/master/iculib.tar.xz"
@@ -31,7 +31,9 @@ v8_enable_verify_heap = true
 v8_enable_memory_corruption_api = true
 " > args.gn
 
-ninja
+# ninja
 cd ..
+bear -- autoninja -C x64.debug
+mv compile_commands.json x64.debug
 tar -cJf v8build.tar.xz x64.debug
 mv v8build.tar.xz /
