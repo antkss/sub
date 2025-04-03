@@ -4,17 +4,17 @@ apt update
 apt install meson pkg-config python3.9 bear -y
 ln -s /usr/bin/python3.9 /usr/bin/python3 -f 
 ln -s /usr/bin/python3.9 /usr/bin/python -f
-wget "https://github.com/antkss/sub/raw/refs/heads/master/iculib.tar.xz"
-tar -xf iculib.tar.xz
-cp -r iculib/usr /
-wget "https://github.com/antkss/sub/raw/refs/heads/master/libxml.tar.xz"
-tar -xf libxml.tar.xz
-cp -r libxml/usr /
+# wget "https://github.com/antkss/sub/raw/refs/heads/master/iculib.tar.xz"
+# tar -xf iculib.tar.xz
+# cp -r iculib/usr /
+# wget "https://github.com/antkss/sub/raw/refs/heads/master/libxml.tar.xz"
+# tar -xf libxml.tar.xz
+# cp -r libxml/usr /
 git clone https://chromium.googlesource.com/chromium/tools/depot_tools -b main
 export PATH=$PATH:$(pwd)/depot_tools
 fetch v8
 cd v8
-git checkout 4a03d61accede9dd0e3e6dc0456ff5a0e3f792b4
+# git checkout 4a03d61accede9dd0e3e6dc0456ff5a0e3f792b4
 gclient sync
 gn gen x64.debug
 cd x64.debug
