@@ -1,39 +1,10 @@
-echo "deb http://ftp.de.debian.org/debian bullseye main " >> /etc/apt/sources.list
-echo " deb http://security.debian.org/debian-security bullseye-security main " >> /etc/apt/sources.list
-apt update 
-apt install meson pkg-config python3.9 bear -y
-ln -s /usr/bin/python3.9 /usr/bin/python3 -f 
-ln -s /usr/bin/python3.9 /usr/bin/python -f
-# wget "https://github.com/antkss/sub/raw/refs/heads/master/iculib.tar.xz"
-# tar -xf iculib.tar.xz
-# cp -r iculib/usr /
-# wget "https://github.com/antkss/sub/raw/refs/heads/master/libxml.tar.xz"
-# tar -xf libxml.tar.xz
-# cp -r libxml/usr /
-git clone https://chromium.googlesource.com/chromium/tools/depot_tools -b main
-export PATH=$PATH:$(pwd)/depot_tools
-fetch v8
-cd v8
-# git checkout 4a03d61accede9dd0e3e6dc0456ff5a0e3f792b4
-gclient sync
-gn gen x64.debug
-cd x64.debug
-echo "is_component_build = false
-is_debug = false
-target_cpu = \"x64\"
-v8_enable_sandbox = true
+mkdir /working
+cd /working
 
-v8_enable_backtrace = true
-v8_enable_disassembler = true
-v8_enable_object_print = true
-v8_enable_verify_heap = true
-
-v8_enable_memory_corruption_api = true
-" > args.gn
-
-# ninja
-cd ..
-bear -- autoninja -C x64.debug
-mv compile_commands.json x64.debug
-tar -cJf v8build.tar.xz x64.debug
-mv v8build.tar.xz /
+apk add alsa-lib-dev qt6-qtwebengine-dev libusb-dev sndio-dev libunwind-dev sdl12-compat-dev
+apk add alsa-lib-dev bison curl-dev flex glib-dev glu-dev iasl kbuild mesa-dev libvncserver-dev libcap-dev libvpx-dev libxcomposite-dev libxinerama-dev libxslt-dev libxcursor-dev libxrandr-dev lvm2-dev libxmu-dev linux-pam-dev opus-dev pulseaudio-dev qt5-qtbase-dev qt5-qtx11extras-dev qt5-qttools-dev sdl12-compat-dev xorg-server-dev yasm python3-dev
+wget "https://download.virtualbox.org/virtualbox/7.1.8/VirtualBox-7.1.8.tar.bz2"
+tar -xf VirtualBox-7.1.8.tar.bz2
+cd VirtualBox-7.1.8
+./configure
+make -j$(nproc)
